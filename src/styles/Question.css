@@ -1,0 +1,41 @@
+.Question {
+  padding-bottom: 2rem;
+  border-bottom: 1px solid var(--dark-white);
+}
+.Question__heading {
+  font-family: "Karla", "Inter", monospace;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 1.6rem;
+  line-height: 1.9rem;
+  color: var(--dark-blue);
+  margin-bottom: 2rem;
+}
+.Question__answers {
+  display: flex;
+  justify-content: space-between;
+}
+.Answer {
+  min-width: 6.6rem;
+  height: 2.5rem;
+  padding: 0 1rem;
+  border-radius: 0.8rem;
+  border: none;
+  border: 1px solid var(--dark-blue);
+  color: var(--dark-blue);
+  background: none;
+  background-color: var(--light-white);
+  cursor: pointer;
+  font-family: inherit;
+  font-weight: 500;
+  font-size: 1rem;
+  line-height: 1.2rem;
+}
+.Answer--active {
+  border-color: var(--light-blue);
+  background-color: var(--light-blue);
+}
+.Answer--correct {
+}
+.Answer--incorrect {
+}

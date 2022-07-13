@@ -1,11 +1,10 @@
 .Intro {
-  height: 55rem;
-  width: 55rem;
+  height: inherit;
+  width: inherit;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: var(--light-white);
 }
 .Intro__heading {
   color: var(--dark-blue);

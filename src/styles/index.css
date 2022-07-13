@@ -44,4 +44,5 @@ body {
   font-size: 1.6;
   width: 19rem;
   height: 5rem;
+  cursor: pointer;
 }
