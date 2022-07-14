@@ -11,13 +11,25 @@ const questionMock = {
 
 describe("Question component", () => {
   test("renders question as heading", () => {
-    render(<Question data={questionMock} handleAnswerClick={jest.fn()} />);
+    render(
+      <Question
+        data={questionMock}
+        handleAnswerClick={jest.fn()}
+        displayAnswer={false}
+      />
+    );
     expect(screen.getByRole("heading").textContent).toBe(
       "How many manned moon landings have there been?"
     );
   });
   test("renders four answer buttons", () => {
-    render(<Question data={questionMock} handleAnswerClick={jest.fn()} />);
+    render(
+      <Question
+        data={questionMock}
+        handleAnswerClick={jest.fn()}
+        displayAnswer={false}
+      />
+    );
     expect(screen.getAllByRole("button").length).toBe(4);
   });
 });

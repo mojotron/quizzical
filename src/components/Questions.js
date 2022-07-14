@@ -6,7 +6,7 @@ import { shuffle } from "../helpers";
 
 const Questions = () => {
   const [questionData, setQuestionData] = useState([]);
-  const [checkAnswers, setCheckAnswers] = useState([]);
+  const [displayAnswer, setDisplayAnswer] = useState(false);
   const [error, setError] = useState("");
 
   useEffect(() => {
@@ -14,7 +14,6 @@ const Questions = () => {
   }, []);
 
   const handleAnswerClick = (id, answer) => {
-    console.log(id, answer);
     setQuestionData((oldData) => {
       const temp = oldData.map((ele) => {
         if (ele.id === id) {
@@ -30,8 +29,8 @@ const Questions = () => {
   const handleCheckAnswersClick = () => {
     const allSelected = questionData.every((ele) => ele.selected !== false);
     if (allSelected) {
-      console.log("YES");
       setError("");
+      setDisplayAnswer((oldValue) => !oldValue);
     } else {
       setError("Please answer on all questions!");
     }
@@ -71,7 +70,9 @@ const Questions = () => {
           question: question.question,
           answers: question.answers,
           selected: question.selected,
+          correct: question.correctAnswer,
         }}
+        displayAnswer={displayAnswer}
         handleAnswerClick={handleAnswerClick}
       />
     );

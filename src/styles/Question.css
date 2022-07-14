@@ -36,7 +36,12 @@
 .Answer.active {
   background-color: var(--dark-white);
 }
-.Answer--correct {
+.Answer.red {
+  background-color: var(--red);
 }
-.Answer--incorrect {
+.Answer.green {
+  background-color: var(--green);
+}
+.Answer.opacity {
+  opacity: 0.5;
 }
