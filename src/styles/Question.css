@@ -1,5 +1,5 @@
 .Question {
-  padding-bottom: 2rem;
+  padding: 1rem 0 2rem;
   border-bottom: 1px solid var(--dark-white);
 }
 .Question__heading {
@@ -9,16 +9,18 @@
   font-size: 1.6rem;
   line-height: 1.9rem;
   color: var(--dark-blue);
-  margin-bottom: 2rem;
+  margin-bottom: 1.25rem;
 }
 .Question__answers {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
+  flex-wrap: wrap;
 }
 .Answer {
+  margin: 0.75rem 0.5rem 0;
   min-width: 6.6rem;
   height: 2.5rem;
-  padding: 0 1rem;
+  padding: 0 2rem;
   border-radius: 0.8rem;
   border: none;
   border: 1px solid var(--dark-blue);
@@ -28,12 +30,11 @@
   cursor: pointer;
   font-family: inherit;
   font-weight: 500;
-  font-size: 1rem;
+  font-size: 1.2rem;
   line-height: 1.2rem;
 }
-.Answer--active {
-  border-color: var(--light-blue);
-  background-color: var(--light-blue);
+.Answer.active {
+  background-color: var(--dark-white);
 }
 .Answer--correct {
 }

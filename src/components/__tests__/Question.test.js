@@ -3,25 +3,21 @@ import userEvent from "@testing-library/user-event";
 import Question from "../Question";
 
 const questionMock = {
+  id: "kjif80",
   question: "How many manned moon landings have there been?",
   answers: ["1", "3", "6", "7"],
+  selected: false,
 };
 
 describe("Question component", () => {
   test("renders question as heading", () => {
-    render(<Question data={questionMock} />);
+    render(<Question data={questionMock} handleAnswerClick={jest.fn()} />);
     expect(screen.getByRole("heading").textContent).toBe(
       "How many manned moon landings have there been?"
     );
   });
   test("renders four answer buttons", () => {
-    render(<Question data={questionMock} />);
+    render(<Question data={questionMock} handleAnswerClick={jest.fn()} />);
     expect(screen.getAllByRole("button").length).toBe(4);
   });
-  // test("selecting answer change class name", () => {
-  //   render(<Question data={questionMock} />);
-  //   const buttons = screen.getAllByRole("button");
-  //   userEvent.click(buttons[1]);
-  //   expect(buttons[1].className).toBe("Answer--active");
-  // });
 });

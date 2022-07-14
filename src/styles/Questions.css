@@ -2,4 +2,10 @@
   height: inherit;
   width: inherit;
   padding: 4rem 7.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.Questions__container {
+  margin-bottom: 3rem;
 }

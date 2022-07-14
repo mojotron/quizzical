@@ -41,8 +41,16 @@ body {
   color: var(--light-white);
   font-family: inherit;
   font-weight: 600;
-  font-size: 1.6;
+  font-size: 1.6rem;
   width: 19rem;
   height: 5rem;
   cursor: pointer;
+}
+.error {
+  background-color: var(--red);
+  color: var(--light-blue);
+  border-radius: 1.75rem;
+  margin-bottom: 2rem;
+  padding: 1rem 4rem;
+  font-size: 1.6rem;
 }

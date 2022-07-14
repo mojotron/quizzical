@@ -2,13 +2,40 @@ import { useEffect, useState } from "react";
 import "../styles/Questions.css";
 import Question from "./Question";
 import uniqid from "uniqid";
+import { shuffle } from "../helpers";
 
 const Questions = () => {
   const [questionData, setQuestionData] = useState([]);
+  const [checkAnswers, setCheckAnswers] = useState([]);
+  const [error, setError] = useState("");
 
   useEffect(() => {
     fetchQuestions();
   }, []);
+
+  const handleAnswerClick = (id, answer) => {
+    console.log(id, answer);
+    setQuestionData((oldData) => {
+      const temp = oldData.map((ele) => {
+        if (ele.id === id) {
+          return { ...ele, selected: answer };
+        } else {
+          return ele;
+        }
+      });
+      return temp;
+    });
+  };
+
+  const handleCheckAnswersClick = () => {
+    const allSelected = questionData.every((ele) => ele.selected !== false);
+    if (allSelected) {
+      console.log("YES");
+      setError("");
+    } else {
+      setError("Please answer on all questions!");
+    }
+  };
 
   const fetchQuestions = async () => {
     try {
@@ -16,14 +43,17 @@ const Questions = () => {
         "https://opentdb.com/api.php?amount=5&type=multiple"
       );
       const data = await response.json();
+
       const temp = data.results.map((question) => {
         return {
-          question: question.question.replace(
-            /(&#(\d+);)/g,
-            (match, capture, charCode) => String.fromCharCode(charCode)
-          ),
+          id: uniqid(),
+          question: question.question,
           correctAnswer: question.correct_answer,
-          answers: [...question.incorrect_answers, question.correct_answer],
+          answers: shuffle(
+            ...question.incorrect_answers,
+            question.correct_answer
+          ),
+          selected: false,
         };
       });
       setQuestionData(temp);
@@ -31,18 +61,31 @@ const Questions = () => {
       console.log(error);
     }
   };
-  // &quot; &rsquo; &eacute;
 
   const questionElements = questionData.map((question) => {
     return (
       <Question
-        key={uniqid()}
-        data={{ question: question.question, answers: question.answers }}
+        key={question.id}
+        data={{
+          id: question.id,
+          question: question.question,
+          answers: question.answers,
+          selected: question.selected,
+        }}
+        handleAnswerClick={handleAnswerClick}
       />
     );
   });
 
-  return <div className="Questions">{questionElements}</div>;
+  return (
+    <div className="Questions">
+      <div className="Questions__container">{questionElements}</div>
+      {error && <p className="error">{error}</p>}
+      <button type="button" className="btn" onClick={handleCheckAnswersClick}>
+        Check Answers
+      </button>
+    </div>
+  );
 };
 
 export default Questions;

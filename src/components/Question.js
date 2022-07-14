@@ -3,10 +3,15 @@ import uniqid from "uniqid";
 
 const Question = (props) => {
   const answerElements = props.data.answers.map((answer) => (
-    <button key={uniqid()} className="Answer">
+    <button
+      onClick={() => props.handleAnswerClick(props.data.id, answer)}
+      key={uniqid()}
+      className={props.data.selected === answer ? "Answer active" : "Answer"}
+    >
       {answer}
     </button>
   ));
+
   return (
     <div title="question" className="Question">
       <h3 className="Question__heading">{props.data.question}</h3>

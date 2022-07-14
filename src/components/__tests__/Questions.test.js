@@ -15,6 +15,12 @@ beforeEach(() => server.resetHandlers());
 afterAll(() => server.close());
 
 describe("Questions container component", () => {
+  test("renders button", () => {
+    render(<Questions />);
+    expect(
+      screen.getByRole("button", { name: /check answer/i })
+    ).toBeInTheDocument();
+  });
   test("renders five questions", async () => {
     render(<Questions />);
     const questionElements = await screen.findAllByTitle("question");
