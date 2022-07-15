@@ -1,6 +1,7 @@
 .App {
-  min-height: 55rem;
+  height: 55rem;
   width: 55rem;
   background-color: var(--light-white);
   display: flex;
+  overflow: scroll;
 }

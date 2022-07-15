@@ -1,15 +1,18 @@
 import { useEffect, useState } from "react";
 import "../styles/Questions.css";
-import Question from "./Question";
 import uniqid from "uniqid";
 import { shuffle } from "../helpers";
+import Question from "./Question";
+import LoadingSpinner from "./LoadingSpinner";
 
-const Questions = () => {
+const Questions = (props) => {
   const [questionData, setQuestionData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [displayAnswer, setDisplayAnswer] = useState(false);
   const [loadQuestion, setLoadQuestions] = useState(false);
   const [error, setError] = useState("");
+
+  console.log(props);
 
   useEffect(() => {
     fetchQuestions();
@@ -47,8 +50,19 @@ const Questions = () => {
 
   const fetchQuestions = async () => {
     try {
+      const category =
+        props.data.category === "any" ? "" : `&category=${props.data.category}`;
+      const difficulty =
+        props.data.difficulty === "any"
+          ? ""
+          : `&difficulty=${props.data.difficulty}`;
+
+      console.log(props.numberOfQuestions, category, difficulty);
+
       const response = await fetch(
-        "https://opentdb.com/api.php?amount=5&type=multiple"
+        `https://opentdb.com/api.php?amount=${props.data.numberOfQuestions}&type=multiple` +
+          category +
+          difficulty
       );
       const data = await response.json();
 
@@ -93,7 +107,7 @@ const Questions = () => {
       .length;
   };
 
-  if (loading) return <p>Loading questions... </p>;
+  if (loading) return <LoadingSpinner />;
 
   return (
     <div className="Questions">
