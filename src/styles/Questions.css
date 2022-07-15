@@ -9,3 +9,16 @@
 .Questions__container {
   margin-bottom: 3rem;
 }
+.Questions__controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.Questions__controls__result {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 1.3rem;
+  line-height: 1.5rem;
+  color: var(--dark-blue);
+}

@@ -46,6 +46,9 @@ body {
   height: 5rem;
   cursor: pointer;
 }
+.small {
+  transform: scale(0.75);
+}
 .error {
   background-color: var(--red);
   color: var(--light-blue);
