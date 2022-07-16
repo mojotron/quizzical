@@ -11,9 +11,9 @@ const Question = (props) => {
         else className = "Answer opacity";
       } else {
         // question answered bad
-        if (props.data.selected === answer) className = "Answer green opacity";
+        if (props.data.selected === answer) className = "Answer red opacity";
         else if (props.data.correct === answer)
-          className = "Answer red opacity";
+          className = "Answer green opacity";
         else className = "Answer opacity";
       }
 

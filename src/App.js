@@ -44,6 +44,7 @@ const App = () => {
             difficulty: quizData.difficulty,
             category: quizData.category,
           }}
+          handleQuizRunning={handleQuizRunning}
         />
       ) : (
         <Intro

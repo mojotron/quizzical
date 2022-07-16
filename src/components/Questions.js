@@ -57,7 +57,7 @@ const Questions = (props) => {
           ? ""
           : `&difficulty=${props.data.difficulty}`;
 
-      console.log(props.numberOfQuestions, category, difficulty);
+      console.log(props.data.numberOfQuestions, category, difficulty);
 
       const response = await fetch(
         `https://opentdb.com/api.php?amount=${props.data.numberOfQuestions}&type=multiple` +
@@ -111,6 +111,10 @@ const Questions = (props) => {
 
   return (
     <div className="Questions">
+      <button className="btn btn--close" onClick={props.handleQuizRunning}>
+        x
+      </button>
+
       <div className="Questions__container">{questionElements}</div>
       {error && <p className="error">{error}</p>}
       <div className="Questions__controls">

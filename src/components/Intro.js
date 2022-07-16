@@ -82,7 +82,7 @@ const Intro = (props) => {
           <label htmlFor="any-difficulty">hard</label>
         </fieldset>
         <fieldset>
-          <label htmlFor="category">Categories</label>
+          <legend htmlFor="category">Categories</legend>
           <select
             id="category"
             value={props.category}

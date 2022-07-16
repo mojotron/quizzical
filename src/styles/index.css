@@ -27,8 +27,7 @@ body {
   background-color: var(--light-blue);
 }
 #root {
-  height: inherit;
-  width: inherit;
+  padding: 5rem 0;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -36,7 +35,7 @@ body {
 .btn {
   background: none;
   background-color: var(--light-blue);
-  border: none;
+  border: 1px solid var(--light-blue);
   border-radius: 1.5rem;
   color: var(--light-white);
   font-family: inherit;
@@ -45,9 +44,22 @@ body {
   width: 19rem;
   height: 5rem;
   cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
 }
 .small {
   transform: scale(0.75);
+}
+.btn.btn--close {
+  position: absolute;
+  width: 3rem;
+  height: 3rem;
+  top: 2rem;
+  right: 2rem;
+}
+.btn:hover,
+.btn:active {
+  background-color: var(--dark-white);
+  color: var(--light-blue);
 }
 .error {
   background-color: var(--red);
@@ -56,4 +68,31 @@ body {
   margin-bottom: 2rem;
   padding: 1rem 4rem;
   font-size: 1.6rem;
+}
+/* custom radio buttons */
+input[type="radio"] {
+  -webkit-appearance: none;
+  appearance: none;
+  background-color: var(--light-white);
+  font: inherit;
+  color: var(--dark-blue);
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 50%;
+  border: 0.2rem solid var(--light-blue);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 0.3rem;
+}
+input[type="radio"]::before {
+  content: "";
+  width: 0.75rem;
+  height: 0.75rem;
+  border-radius: 50%;
+  background-color: var(--light-blue);
+  transform: scale(0);
+}
+input[type="radio"]:checked::before {
+  transform: scale(1);
 }
