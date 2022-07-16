@@ -1,4 +1,4 @@
-export const shuffle = (...items) => {
+const shuffle = (...items) => {
   const tempContainer = [...items];
   const result = [];
   while (tempContainer.length > 0) {
@@ -7,3 +7,5 @@ export const shuffle = (...items) => {
   }
   return result;
 };
+
+export default shuffle;

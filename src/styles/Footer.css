@@ -1,0 +1,16 @@
+.Footer {
+  margin-top: 5rem;
+  font-family: "Karla";
+}
+.Footer__info {
+  color: var(--light-white);
+  font-size: 1.3rem;
+}
+.Footer__info__link {
+  font-weight: 600;
+  color: var(--dark-white);
+}
+.Footer__info__link:hover,
+.Footer__info__link:active {
+  color: var(--dark-blue);
+}

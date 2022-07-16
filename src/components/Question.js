@@ -2,23 +2,27 @@ import "../styles/Question.css";
 import uniqid from "uniqid";
 
 const Question = (props) => {
-  const answerElements = props.data.answers.map((answer) => {
-    if (props.displayAnswer) {
-      let className;
-      if (props.data.selected === props.data.correct) {
-        // question answered good
-        if (answer === props.data.selected) className = "Answer green";
-        else className = "Answer opacity";
-      } else {
-        // question answered bad
-        if (props.data.selected === answer) className = "Answer red opacity";
-        else if (props.data.correct === answer)
-          className = "Answer green opacity";
-        else className = "Answer opacity";
-      }
+  const determineClassName = (answer) => {
+    let className;
+    // question answered correct
+    if (props.data.selected === props.data.correct) {
+      if (answer === props.data.selected) className = "Answer green";
+      else className = "Answer opacity";
+      // question answered incorrect
+    } else {
+      if (props.data.selected === answer) className = "Answer red opacity";
+      else if (props.data.correct === answer)
+        className = "Answer green opacity";
+      else className = "Answer opacity";
+    }
+    return className;
+  };
 
+  const answerElements = props.data.answers.map((answer) => {
+    // create button element depending on game state
+    if (props.displayAnswer) {
       return (
-        <button key={uniqid()} className={className}>
+        <button key={uniqid()} className={determineClassName(answer)}>
           {answer}
         </button>
       );

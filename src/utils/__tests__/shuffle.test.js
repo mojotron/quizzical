@@ -1,4 +1,4 @@
-import { shuffle } from "../helpers";
+import shuffle from "../shuffle";
 
 describe("shuffle function", () => {
   test("have same amount of items", () => {

@@ -11,6 +11,7 @@ const Intro = (props) => {
     <div className="Intro">
       <h1 className="Intro__heading">Quizzical</h1>
       <p className="Intro__info">have fun answering trivia questions</p>
+
       <form aria-label="form">
         <fieldset>
           <legend>Number of question</legend>
@@ -94,6 +95,7 @@ const Intro = (props) => {
           </select>
         </fieldset>
       </form>
+
       <button type="button" className="btn" onClick={props.handleQuizRunning}>
         Start quiz
       </button>

@@ -1,9 +1,11 @@
 import { useEffect, useState } from "react";
 import "../styles/Questions.css";
 import uniqid from "uniqid";
-import { shuffle } from "../helpers";
+import shuffle from "../utils/shuffle";
+import htmlEntitiesDecode from "../utils/htmlEntitiesDecode";
 import Question from "./Question";
 import LoadingSpinner from "./LoadingSpinner";
+import Error from "./Error";
 
 const Questions = (props) => {
   const [questionData, setQuestionData] = useState([]);
@@ -69,12 +71,12 @@ const Questions = (props) => {
       const temp = data.results.map((question) => {
         return {
           id: uniqid(),
-          question: question.question,
-          correctAnswer: question.correct_answer,
+          question: htmlEntitiesDecode(question.question),
+          correctAnswer: htmlEntitiesDecode(question.correct_answer),
           answers: shuffle(
             ...question.incorrect_answers,
             question.correct_answer
-          ),
+          ).map((ele) => htmlEntitiesDecode(ele)),
           selected: false,
         };
       });
@@ -116,7 +118,9 @@ const Questions = (props) => {
       </button>
 
       <div className="Questions__container">{questionElements}</div>
-      {error && <p className="error">{error}</p>}
+
+      {error && <Error message={error} />}
+
       <div className="Questions__controls">
         {displayAnswer && (
           <p className="Questions__controls__result">
