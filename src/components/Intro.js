@@ -13,7 +13,7 @@ const Intro = (props) => {
       <p className="Intro__info">have fun answering trivia questions</p>
 
       <form aria-label="form">
-        <fieldset>
+        <fieldset data-testid="fieldset">
           <legend>Number of question</legend>
           <input
             id="5-questions"
@@ -43,7 +43,7 @@ const Intro = (props) => {
           />
           <label htmlFor="15-questions">15</label>
         </fieldset>
-        <fieldset>
+        <fieldset data-testid="fieldset">
           <legend>Question difficulty</legend>
           <input
             id="any-difficulty"
@@ -53,7 +53,7 @@ const Intro = (props) => {
             checked={props.difficulty === "any"}
             onChange={props.handleChange}
           />
-          <label htmlFor="any-difficulty">Any</label>
+          <label htmlFor="any-difficulty">any</label>
           <input
             id="any-difficulty"
             type="radio"
@@ -62,7 +62,7 @@ const Intro = (props) => {
             checked={props.difficulty === "easy"}
             onChange={props.handleChange}
           />
-          <label htmlFor="any-difficulty">Easy</label>
+          <label htmlFor="any-difficulty">easy</label>
           <input
             id="any-difficulty"
             type="radio"
@@ -82,7 +82,7 @@ const Intro = (props) => {
           />
           <label htmlFor="any-difficulty">hard</label>
         </fieldset>
-        <fieldset>
+        <fieldset data-testid="fieldset">
           <legend htmlFor="category">Categories</legend>
           <select
             id="category"
@@ -90,7 +90,7 @@ const Intro = (props) => {
             name="category"
             onChange={props.handleChange}
           >
-            <option value="any">Any</option>
+            <option value="Any">Any</option>
             {optionElements}
           </select>
         </fieldset>

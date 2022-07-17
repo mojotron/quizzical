@@ -42,7 +42,7 @@ const Question = (props) => {
   });
 
   return (
-    <div title="question" className="Question">
+    <div data-testid="question" className="Question">
       <h3 className="Question__heading">{props.data.question}</h3>
       <div className="Question__answers">{answerElements}</div>
     </div>

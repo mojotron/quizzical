@@ -14,8 +14,6 @@ const Questions = (props) => {
   const [loadQuestion, setLoadQuestions] = useState(false);
   const [error, setError] = useState("");
 
-  console.log(props);
-
   useEffect(() => {
     fetchQuestions();
   }, []);
@@ -41,7 +39,7 @@ const Questions = (props) => {
   };
 
   const handleCheckAnswersClick = () => {
-    const allSelected = questionData.every((ele) => ele.selected !== false);
+    const allSelected = questionData.every((ele) => ele.selected !== "");
     if (allSelected) {
       setError("");
       setDisplayAnswer((oldValue) => !oldValue);
@@ -59,8 +57,6 @@ const Questions = (props) => {
           ? ""
           : `&difficulty=${props.data.difficulty}`;
 
-      console.log(props.data.numberOfQuestions, category, difficulty);
-
       const response = await fetch(
         `https://opentdb.com/api.php?amount=${props.data.numberOfQuestions}&type=multiple` +
           category +
@@ -77,13 +73,15 @@ const Questions = (props) => {
             ...question.incorrect_answers,
             question.correct_answer
           ).map((ele) => htmlEntitiesDecode(ele)),
-          selected: false,
+          selected: "",
         };
       });
       setQuestionData(temp);
       setLoading(false);
     } catch (error) {
       console.log(error);
+      setError("NetworkError, please try again!");
+      setLoading(false);
     }
   };
 
@@ -110,6 +108,7 @@ const Questions = (props) => {
   };
 
   if (loading) return <LoadingSpinner />;
+  // if (error.startsWith("NetworkError")) return <Error message={error} />;
 
   return (
     <div className="Questions">
@@ -141,7 +140,7 @@ const Questions = (props) => {
           </button>
         )}
 
-        {!displayAnswer && (
+        {!displayAnswer && !error.startsWith("NetworkError") && (
           <button
             type="button"
             className="btn"
