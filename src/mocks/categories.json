@@ -1,0 +1,24 @@
+{
+  "trivia_categories": [
+    {
+      "id": 20,
+      "name": "Mythology"
+    },
+    {
+      "id": 21,
+      "name": "Sports"
+    },
+    {
+      "id": 22,
+      "name": "Geography"
+    },
+    {
+      "id": 23,
+      "name": "History"
+    },
+    {
+      "id": 25,
+      "name": "Art"
+    }
+  ]
+}
