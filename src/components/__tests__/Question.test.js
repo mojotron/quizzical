@@ -1,8 +1,7 @@
 import { render, screen } from "@testing-library/react";
-import userEvent from "@testing-library/user-event";
 import Question from "../Question";
 
-const questionDataMock = {
+const questionMockUnselected = {
   id: "kjif80",
   question: "How many manned moon landings have there been?",
   answers: ["1", "3", "6", "7"],
@@ -10,7 +9,7 @@ const questionDataMock = {
   correct: "6",
 };
 
-const questionDataMock2 = {
+const questionMockCorrect = {
   id: "kjif80",
   question: "How many manned moon landings have there been?",
   answers: ["1", "3", "6", "7"],
@@ -18,7 +17,7 @@ const questionDataMock2 = {
   correct: "6",
 };
 
-const questionDataMock3 = {
+const questionMockIncorrect = {
   id: "kjif80",
   question: "How many manned moon landings have there been?",
   answers: ["1", "3", "6", "7"],
@@ -30,7 +29,7 @@ describe("Question component", () => {
   test("renders question as heading", () => {
     render(
       <Question
-        data={questionDataMock}
+        data={questionMockUnselected}
         displayAnswer={false}
         handleAnswerClick={jest.fn()}
       />
@@ -40,7 +39,7 @@ describe("Question component", () => {
   test("renders four answer buttons", () => {
     render(
       <Question
-        data={questionDataMock}
+        data={questionMockUnselected}
         displayAnswer={false}
         handleAnswerClick={jest.fn()}
       />
@@ -52,7 +51,7 @@ describe("Question component", () => {
     test("all buttons have 'Answer' class when data.selected=''", () => {
       render(
         <Question
-          data={questionDataMock}
+          data={questionMockUnselected}
           displayAnswer={false}
           handleAnswerClick={jest.fn()}
         />
@@ -63,7 +62,7 @@ describe("Question component", () => {
     test("one button have class active when one answer is selected", () => {
       render(
         <Question
-          data={questionDataMock2}
+          data={questionMockCorrect}
           displayAnswer={false}
           handleAnswerClick={jest.fn()}
         />
@@ -76,14 +75,13 @@ describe("Question component", () => {
         btnElements.filter((btn) => btn.className === "Answer active").length
       ).toBe(1);
     });
-    // TODO selecting deselecting button
   });
 
   describe("Display answers flag true", () => {
     test("correct answer", () => {
       render(
         <Question
-          data={questionDataMock2}
+          data={questionMockCorrect}
           displayAnswer={true}
           handleAnswerClick={jest.fn()}
         />
@@ -99,7 +97,7 @@ describe("Question component", () => {
     test("incorrect answer", () => {
       render(
         <Question
-          data={questionDataMock3}
+          data={questionMockIncorrect}
           displayAnswer={true}
           handleAnswerClick={jest.fn()}
         />

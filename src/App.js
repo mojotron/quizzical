@@ -25,6 +25,7 @@ const App = () => {
       })
       .catch((error) => {
         console.error(error.message);
+        setDataLoaded(true);
         setError(
           "Network error, please refresh the page or try later. Sorry :("
         );

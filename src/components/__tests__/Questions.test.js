@@ -2,7 +2,7 @@ import { render, screen } from "@testing-library/react";
 import { rest } from "msw";
 import { setupServer } from "msw/node";
 import Questions from "../Questions";
-import data from "../../mocks/data";
+import questionsMock from "../../mocks/questions.json";
 import userEvent from "@testing-library/user-event";
 
 const dataMock = {
@@ -13,7 +13,7 @@ const dataMock = {
 
 const server = setupServer(
   rest.get("https://opentdb.com/api.php", (req, res, ctx) => {
-    return res(ctx.status(200), ctx.json(data));
+    return res(ctx.status(200), ctx.json(questionsMock));
   })
 );
 

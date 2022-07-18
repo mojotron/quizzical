@@ -55,36 +55,37 @@ const Intro = (props) => {
           />
           <label htmlFor="any-difficulty">any</label>
           <input
-            id="any-difficulty"
+            id="easy-difficulty"
             type="radio"
             name="difficulty"
             value="easy"
             checked={props.difficulty === "easy"}
             onChange={props.handleChange}
           />
-          <label htmlFor="any-difficulty">easy</label>
+          <label htmlFor="easy-difficulty">easy</label>
           <input
-            id="any-difficulty"
+            id="medium-difficulty"
             type="radio"
             name="difficulty"
             value="medium"
             checked={props.difficulty === "medium"}
             onChange={props.handleChange}
           />
-          <label htmlFor="any-difficulty">medium</label>
+          <label htmlFor="medium-difficulty">medium</label>
           <input
-            id="any-difficulty"
+            id="hard-difficulty"
             type="radio"
             name="difficulty"
             value="hard"
             checked={props.difficulty === "hard"}
             onChange={props.handleChange}
           />
-          <label htmlFor="any-difficulty">hard</label>
+          <label htmlFor="hard-difficulty">hard</label>
         </fieldset>
         <fieldset data-testid="fieldset">
           <legend htmlFor="category">Categories</legend>
           <select
+            data-testid="category-select"
             id="category"
             value={props.category}
             name="category"
